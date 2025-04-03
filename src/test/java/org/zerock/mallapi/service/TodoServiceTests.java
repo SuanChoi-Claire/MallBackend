@@ -21,11 +21,18 @@ public class TodoServiceTests {
 
     TodoDTO todoDTO = TodoDTO.builder()
 
-    .title("서비스테스트")
-    .writer("tester")
-    .duDate(LocalDate.of(2023, 10, 10)).build();
+    .title("서비스테스트2")
+    .writer("tester2")
+    .duDate(LocalDate.of(2024, 10, 10)).build();
     Long tno = todoService.register(todoDTO);
     log.info("TNO:"+ tno);
+    }
+
+    @Test
+    public void testGet(){
+        Long tno = 1L;
+        TodoDTO todoDTO = todoService.get(tno);
+        log.info(todoDTO);
     }
 
 }
