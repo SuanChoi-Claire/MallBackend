@@ -38,4 +38,28 @@ public class TodoServiceImpl implements TodoService{
         return dto;
     }
 
+    @Override
+    public void modify(TodoDTO todoDTO){
+        Optional<Todo> result = todoRepository.findById(todoDTO.getTno());
+
+        Todo todo = result.orElseThrow();
+
+        todo.changeTitle(todoDTO.getTitle());
+        todo.changeDueDate(todoDTO.getDuDate());
+        todo.changeComplete(todoDTO.isComplate());
+
+        todoRepository.save(todo);
+
+    }
+
+    @Override
+    public void remove(Long tno){
+
+        todoRepository.deleteById(tno);
+
+    }
+
+
+
+
 }
