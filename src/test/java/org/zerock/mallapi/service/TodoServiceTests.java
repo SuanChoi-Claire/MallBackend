@@ -77,7 +77,7 @@ public class TodoServiceTests {
 
         // assertThrows(Exception.class, () -> {
         //     log.info("*******삭제된 데이터 조회 시도******");
-        // todoService.get(tno); // 없어진 데이터를 가져오면 예외 발생해야 함
+        // todoService.get(tno); // 없어진 데이터를 가져오면 예외 발생해야 함 
   
     // });
 
