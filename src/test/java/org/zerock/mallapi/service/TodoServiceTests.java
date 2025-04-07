@@ -7,7 +7,10 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.zerock.mallapi.domain.Todo;
+import org.zerock.mallapi.dto.PageRequestDTO;
+import org.zerock.mallapi.dto.PageResponseDTO;
 import org.zerock.mallapi.dto.TodoDTO;
 import org.zerock.mallapi.repository.TodoRepository;
 
@@ -29,7 +32,7 @@ public class TodoServiceTests {
 
     .title("서비스테스트2")
     .writer("tester2")
-    .duDate(LocalDate.of(2024, 10, 10)).build();
+    .dueDate(LocalDate.of(2024, 10, 10)).build();
     Long tno = todoService.register(todoDTO);
     log.info("TNO:"+ tno);
     }
@@ -47,8 +50,8 @@ public class TodoServiceTests {
         TodoDTO todoDTO = TodoDTO.builder()
         .tno(55L)
         .title("############수정테스트##########")
-        .duDate(LocalDate.now())
-        .complate(true)
+        .dueDate(LocalDate.now())
+        .complete(true)
         .build();
 
         todoService.modify(todoDTO);
@@ -86,6 +89,21 @@ public class TodoServiceTests {
 
 
 
+    }
+
+
+    @Test
+    public void testList() {
+  
+      PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+      .page(2)
+      .size(10)
+      .build();
+  
+      PageResponseDTO<TodoDTO> response = todoService.list(pageRequestDTO);
+  
+      log.info(response);
+  
     }
 
 }

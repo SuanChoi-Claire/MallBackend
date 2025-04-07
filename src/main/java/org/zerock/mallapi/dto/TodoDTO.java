@@ -22,9 +22,9 @@ public class TodoDTO {
 
     private String writer;
 
-    private boolean complate;
+    private boolean complete;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern= "yyyy-MM-dd")
-    private LocalDate duDate;
+    private LocalDate dueDate;
 
 }
