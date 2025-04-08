@@ -29,7 +29,7 @@ public class TodoController {
 
     @GetMapping("/list")
     public PageResponseDTO<TodoDTO> list(PageRequestDTO pageRequestDTO){
-        log.info(pageRequestDTO);
+        log.info("/////////////" + pageRequestDTO);
         return service.list(pageRequestDTO);
     }
 
