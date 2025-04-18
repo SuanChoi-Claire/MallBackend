@@ -16,6 +16,7 @@ import org.zerock.mallapi.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
@@ -48,7 +49,7 @@ public class TodoController {
         return Map.of("TNO",tno);
     }
 
-    @PostMapping("/{tno}")
+    @PutMapping("/{tno}")
     public Map<String, String> Modify(
 
     @PathVariable(name="tno")Long tno,
