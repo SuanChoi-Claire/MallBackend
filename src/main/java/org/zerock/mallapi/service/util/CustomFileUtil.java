@@ -52,7 +52,8 @@ public class CustomFileUtil {
         List<String> uploadNames = new ArrayList<>();
         for (MultipartFile multipartFile : files){
 
-            String savedName = Paths.get(uploadPath, savedName);
+            String savedName = UUID.randomUUID().toString() + "_" + multipartFile.getOriginalFilename();
+            Path savePath = Paths.get(uploadPath, savedName);
             try{
                 Files.copy(multipartFile.getInputStream(),savePath);
                 uploadNames.add(savedName);
@@ -60,8 +61,8 @@ public class CustomFileUtil {
                 throw new RuntimeException(e.getMessage());
             }
 
-            return uploadNames;
-        }
+        }//for문 끝
+        return uploadNames;
     }
 
 
