@@ -110,4 +110,29 @@ public class CustomFileUtil {
 
 
 
+
+    public void deleteFiles(List<String> fileNames){
+
+        if(fileNames == null || fileNames.size() == 0){
+            return;
+        }
+
+        fileNames.forEach(fileName -> {
+
+            String thumbnailFileName = "s_" + fileNames;
+            Path thumnailPath = Paths.get(uploadPath, thumbnailFileName);
+            Path filePath = Paths.get(uploadPath, fileName);
+
+            try {
+                Files.deleteIfExists(filePath);
+                Files.deleteIfExists(thumnailPath);
+
+            }catch (IOException e){
+                throw new RuntimeException(e.getMessage());
+            }
+
+        });
+
+    }
+
 }
